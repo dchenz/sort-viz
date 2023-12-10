@@ -1,19 +1,17 @@
 import React, { useMemo } from "react";
+import { GRAPH_HEIGHT, GRAPH_WIDTH } from "./constants";
 
 type GraphProps = {
   values: number[];
 };
-
-const width = 1000;
-const height = 500;
 
 const Graph: React.FC<GraphProps> = ({ values }) => {
   const maxValue = useMemo(() => Math.max(...values), [values]);
   return (
     <div
       style={{
-        width: `${width}px`,
-        height: `${height}px`,
+        width: `${GRAPH_WIDTH}px`,
+        height: `${GRAPH_HEIGHT}px`,
         display: "flex",
         alignItems: "center",
       }}
@@ -22,8 +20,8 @@ const Graph: React.FC<GraphProps> = ({ values }) => {
         <div
           key={index}
           style={{
-            width: `${width / values.length}px`,
-            height: `${(height * value) / maxValue}px`,
+            width: `${GRAPH_WIDTH / values.length}px`,
+            height: `${(GRAPH_HEIGHT * value) / maxValue}px`,
             backgroundColor: "black",
           }}
         ></div>

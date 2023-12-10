@@ -1,22 +1,27 @@
 import React, { useState } from "react";
 import CodeEditor from "./CodeEditor";
+import { STARTER_BLANK, STARTER_BUBBLE_SORT } from "./constants";
 
 type FunctionEditorProps = {
   execute: (code: string) => void;
-  starterCode: string;
   preamble: string;
   postamble: string;
 };
 
 const FunctionEditor: React.FC<FunctionEditorProps> = ({
   execute,
-  starterCode,
   preamble,
   postamble,
 }) => {
-  const [body, setBody] = useState(starterCode);
+  const [body, setBody] = useState(STARTER_BLANK);
   return (
     <div>
+      <span>
+        <button onClick={() => setBody(STARTER_BLANK)}>Blank</button>
+        <button onClick={() => setBody(STARTER_BUBBLE_SORT)}>
+          Bubble sort
+        </button>
+      </span>
       <CodeEditor code={preamble} readOnly={true} onChange={() => undefined} />
       <CodeEditor code={body} onChange={setBody} />
       <CodeEditor code={postamble} readOnly={true} onChange={() => undefined} />

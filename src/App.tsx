@@ -2,15 +2,7 @@ import React, { useState } from "react";
 import Graph from "./Graph";
 import "./styles.css";
 import FunctionEditor from "./FunctionEditor";
-
-const preambleFixed = `// arr: number[]
-// setIndex: (index: number, value: number) => Promise<void>
-async function sort(arr, setIndex) {`;
-
-const starterCode = `  // implement me
-  // await setIndex(0, 123);`;
-
-const postambleFixed = "}";
+import { POSTAMBLE, PREAMBLE, STARTER_BUBBLE_SORT } from "./constants";
 
 const AsyncFunction = Object.getPrototypeOf(async () => undefined).constructor;
 
@@ -44,9 +36,8 @@ const App = () => {
       <Graph values={values} />
       <FunctionEditor
         execute={execute}
-        starterCode={starterCode}
-        preamble={preambleFixed}
-        postamble={postambleFixed}
+        preamble={PREAMBLE}
+        postamble={POSTAMBLE}
       />
     </div>
   );
